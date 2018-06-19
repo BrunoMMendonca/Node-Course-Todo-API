@@ -33,4 +33,16 @@ app.get('/todos',(req,res)=>{
     });
 });
 
+app.post('/users',(req, res)=>{
+    var user = new User({
+        email: req.body.email
+    });
+
+    user.save().then((doc)=> {
+        res.send(doc);
+    },(err)=>{
+        res.status(400).send(err);
+    });
+});
+
 module.exports = {app};
