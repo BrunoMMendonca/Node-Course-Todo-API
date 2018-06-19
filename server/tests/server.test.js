@@ -12,10 +12,14 @@ const todos = [{
     completedAt: 333
     }, {
     _id: new ObjectID(),
-    text: 'Cook dinner'
+    text: 'Cook dinner',
+    completed: false,
+    completedAt: 333
     }, {
     _id: new ObjectID(),
-    text: 'Have fun'
+    text: 'Have fun',
+    completed: false,
+    completedAt: 333
     }];
 
 beforeEach((done)=>{
@@ -108,7 +112,7 @@ describe('GET /todos/:id', () => {
 describe('DELETE /todos/:id', () => {
 
     it('should remove a todo doc',(done) => {
-        var hexID = todos[0]._id.toHexString();
+        var hexID = todos[2]._id.toHexString();
         request(app)
             .delete(`/todos/${hexID}`)
             .expect(200)
@@ -166,7 +170,7 @@ describe('PATCH /todos/:id', () => {
     });
 
     it('should clear completedAt when todo is not completed',(done) => {
-        var hexID = todos[0]._id.toHexString();
+        var hexID = todos[1]._id.toHexString();
         var text = 'test 2 - OK';
         
         request(app)
