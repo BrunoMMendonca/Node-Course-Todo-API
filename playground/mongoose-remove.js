@@ -10,9 +10,9 @@ Todo.remove({}).then((res)=>{
 
 Todo.findOneAndRemove({
     _id: '5b290a2167a35b00142d1e18'
-}.then(todo)=>{
+}).then((todo)=>{
     console.log('Todo removed', todo);
-})
+});
 
 Todo.findByIdAndRemove('5b290a2167a35b00142d1e18').then((todo)=>{
     console.log('Todo removed', todo);
