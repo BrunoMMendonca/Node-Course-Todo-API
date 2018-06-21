@@ -17,24 +17,23 @@ const users = [{
     }, {
     _id: userTwoID,
     email: 'b@abc.com',
-    password: 'userTwoPass'
+    password: 'userTwoPass',
+    tokens: [{
+        access: 'auth',
+        token: jwt.sign({_id: userTwoID.toHexString(), access: 'auth'}, '123abc').toString()
+        }]
     }];
 
 const todos = [{
     _id: new ObjectID(),
     text: 'Get the dog to the vet',
-    completed: false,
-    completedAt: 333
+    _creator: userOneID,
     }, {
     _id: new ObjectID(),
     text: 'Cook dinner',
     completed: false,
-    completedAt: 333
-    }, {
-    _id: new ObjectID(),
-    text: 'Have fun',
-    completed: false,
-    completedAt: 333
+    completedAt: 333,
+    _creator: userTwoID,
     }];
 
 const populateTodos = (done)=>{
