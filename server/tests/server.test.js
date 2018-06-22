@@ -188,12 +188,12 @@ describe('PATCH /todos/:id', () => {
     });
 
     it('should not update a todo from other user',(done) => {
-        var hexID = todos[1]._id.toHexString();
+        var hexID = todos[0]._id.toHexString();
         var text = 'test 1 - OK';
 
         request(app)
             .patch(`/todos/${hexID}`)
-            .set('x-auth', users[0].tokens[0].token)
+            .set('x-auth', users[1].tokens[0].token)
             .send({
             text,
             completed : true
